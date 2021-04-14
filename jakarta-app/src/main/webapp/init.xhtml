@@ -1,0 +1,25 @@
+<ui:composition template="/template/main-simple.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html"
+>
+
+    <ui:define name="pageName">App Home </ui:define>
+    <ui:define name="content">
+        <div class="row">
+            <ul>
+                <h:link outcome="/customer/customers">
+                    <h3>Customers</h3>
+                </h:link>
+                <h:link outcome="/invoice/invoices">
+                    <h3>Invoices</h3>
+                </h:link>
+                <h:link outcome="/reward/rewards">
+                    <h3>Rewards</h3>
+                </h:link>
+                <h:link outcome="/notification/notifications">
+                    <h3>Notifications</h3>
+                </h:link>
+            </ul>
+        </div>
+    </ui:define>
+
+</ui:composition>

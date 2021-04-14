@@ -1,0 +1,17 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns:h="http://java.sun.com/jsf/html">
+<ui:composition>
+
+    <footer id="footer">
+        <div class="container" align="center" style="margin: 10px 0; border: solid 1px #333333; background: #eeeeee; padding: 15px;">
+            Customer app - 2001
+        </div>
+    </footer>
+
+    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
+        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>
+        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" />
+    </p:confirmDialog>
+
+</ui:composition>
+</html>
