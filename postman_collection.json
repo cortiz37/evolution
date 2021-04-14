@@ -1,0 +1,233 @@
+{
+	"info": {
+		"_postman_id": "84355513-ed9c-4496-b694-9f58182c5fb8",
+		"name": "evolution",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "customer",
+			"item": [
+				{
+					"name": "GET ALL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}{{version}}/customers",
+							"host": [
+								"{{server}}{{version}}"
+							],
+							"path": [
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE BY ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{server}}{{version}}/customers/c2",
+							"host": [
+								"{{server}}{{version}}"
+							],
+							"path": [
+								"customers",
+								"c2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "invoice",
+			"item": [
+				{
+					"name": "GET ALL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}{{version}}/customers/invoices",
+							"host": [
+								"{{server}}{{version}}"
+							],
+							"path": [
+								"customers",
+								"invoices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"merchant\": \"Super 1\",\n    \"total\": 50.0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}{{version}}/customers/c1/invoices?reward=",
+							"host": [
+								"{{server}}{{version}}"
+							],
+							"path": [
+								"customers",
+								"c1",
+								"invoices"
+							],
+							"query": [
+								{
+									"key": "reward",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "reward",
+			"item": [
+				{
+					"name": "GET ALL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}{{version}}/customers/rewards",
+							"host": [
+								"{{server}}{{version}}"
+							],
+							"path": [
+								"customers",
+								"rewards"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE BY ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{server}}{{version}}/customers/rewards/r001",
+							"host": [
+								"{{server}}{{version}}"
+							],
+							"path": [
+								"customers",
+								"rewards",
+								"r001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ACTIVE PER CLIENT",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}{{version}}/customers/c1/rewards",
+							"host": [
+								"{{server}}{{version}}"
+							],
+							"path": [
+								"customers",
+								"c1",
+								"rewards"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "notification",
+			"item": [
+				{
+					"name": "GET ALL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}{{version}}/notifications",
+							"host": [
+								"{{server}}{{version}}"
+							],
+							"path": [
+								"notifications"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE BY ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{server}}{{version}}/notifications/0f58001e-0135-4bf5-845e-158c9931f1c6",
+							"host": [
+								"{{server}}{{version}}"
+							],
+							"path": [
+								"notifications",
+								"0f58001e-0135-4bf5-845e-158c9931f1c6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"to\": \"VALID_EMAIL_ADDRESS\",\n    \"subject\": \"New notification\",\n    \"body\": \"Email notification content\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}{{version}}/notifications",
+							"host": [
+								"{{server}}{{version}}"
+							],
+							"path": [
+								"notifications"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
