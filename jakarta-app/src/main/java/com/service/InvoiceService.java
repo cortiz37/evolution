@@ -27,6 +27,7 @@ public class InvoiceService {
     public Invoice create(Invoice invoice, String customerId) {
         invoice.setId(UUID.randomUUID().toString());
         invoice.setDate(java.sql.Date.valueOf(LocalDate.now()));
+        invoice.setClientId(customerId);
         return invoiceRepository.save(invoice, customerId);
     }
 }

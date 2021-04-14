@@ -60,7 +60,7 @@ public class InvoiceFacade {
 
     private boolean applyReward(String rewardId, Invoice invoice, String customerId) {
         boolean rewarded = false;
-        if (rewardId != null) {
+        if (rewardId != null && !rewardId.trim().isEmpty()) {
             rewarded = rewardService.getAllActiveByCustomerId(customerId)
                 .stream()
                 .filter(r -> r.getId().equals(rewardId))

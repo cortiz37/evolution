@@ -18,7 +18,7 @@ public class CustomerFacade {
         return customerService.getAll();
     }
 
-    public Optional<Customer> getElementById(String id) {
+    public Optional<Customer> getCustomerById(String id) {
         return customerService.getCustomerById(id);
     }
 
