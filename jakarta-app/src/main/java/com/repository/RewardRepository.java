@@ -21,7 +21,7 @@ public class RewardRepository {
 
     static {
         List<Reward> client1Rewards = new ArrayList<>();
-        client1Rewards.add(new Reward("r001", "c1", "Discount 5%", java.sql.Date.valueOf(LocalDate.now()), 5));
+        client1Rewards.add(new Reward("r001", "c1", "Discount 5%", new Date(), 5));
 
         database.put("c1", client1Rewards);
     }

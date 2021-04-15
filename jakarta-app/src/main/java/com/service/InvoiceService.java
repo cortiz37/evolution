@@ -5,7 +5,7 @@ import com.repository.InvoiceRepository;
 
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -26,7 +26,7 @@ public class InvoiceService {
 
     public Invoice create(Invoice invoice, String customerId) {
         invoice.setId(UUID.randomUUID().toString());
-        invoice.setDate(java.sql.Date.valueOf(LocalDate.now()));
+        invoice.setDate(new Date());
         invoice.setClientId(customerId);
         return invoiceRepository.save(invoice, customerId);
     }

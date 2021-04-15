@@ -13,5 +13,6 @@ public class RestApiProvider implements ContainerResponseFilter {
     public void filter(final ContainerRequestContext containerRequestContext, final ContainerResponseContext containerResponseContext) throws IOException {
         containerResponseContext.getHeaders().add("Access-Control-Allow-Origin", "*");
         containerResponseContext.getHeaders().add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD");
+        containerResponseContext.getHeaders().add("Access-Control-Allow-Headers", "origin, content-type, accept, authorization");
     }
 }

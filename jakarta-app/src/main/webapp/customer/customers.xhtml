@@ -1,6 +1,7 @@
 <ui:composition template="/template/main-simple.xhtml" xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui"
-                xmlns:h="http://java.sun.com/jsf/html">
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
 
     <ui:define name="pageName">Customers</ui:define>
     <ui:define name="content">
@@ -22,7 +23,9 @@
                         <h:outputText value="#{customer.email}"/>
                     </p:column>
                     <p:column headerText="Date" priority="1">
-                        <h:outputText value="#{customer.date}"/>
+                        <h:outputText value="#{customer.date}">
+                            <f:convertDateTime pattern="yyyy/MM/dd"/>
+                        </h:outputText>
                     </p:column>
                     <p:column priority="1">
                         <i class="pi #{customer.active ? 'pi-check' : 'pi-times'}"></i>

@@ -3,7 +3,6 @@ package com.repository;
 import com.model.Invoice;
 
 import javax.enterprise.context.ApplicationScoped;
-import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -17,15 +16,15 @@ public class InvoiceRepository {
 
     static {
         List<Invoice> client1Invoices = new ArrayList<>();
-        client1Invoices.add(new Invoice("i001", "c1", "Supermarket 1", 100, 100, java.sql.Date.valueOf(LocalDate.of(2000, 10, 4))));
-        client1Invoices.add(new Invoice("i001", "c1", "Supermarket 2", 100, 90, java.sql.Date.valueOf(LocalDate.of(2000, 11, 5))));
-        client1Invoices.add(new Invoice("i001", "c1", "Supermarket 1", 100, 100, java.sql.Date.valueOf(LocalDate.of(2001, 1, 3))));
+        client1Invoices.add(new Invoice("i001", "c1", "Supermarket 1", 100, 100, new Date()));
+        client1Invoices.add(new Invoice("i002", "c1", "Supermarket 2", 100, 90, new Date()));
+        client1Invoices.add(new Invoice("i003", "c1", "Supermarket 1", 100, 100, new Date()));
 
         database.put("c1", client1Invoices);
 
 
         List<Invoice> client2Invoices = new ArrayList<>();
-        client2Invoices.add(new Invoice("i001", "c2", "Supermarket 2", 85, 85, java.sql.Date.valueOf(LocalDate.of(2012, 4, 7))));
+        client2Invoices.add(new Invoice("i004", "c2", "Supermarket 2", 85, 85, new Date()));
 
         database.put("c2", client2Invoices);
     }
