@@ -1,0 +1,227 @@
+{
+	"info": {
+		"_postman_id": "e931f549-a77a-4539-903e-a76698a4c87b",
+		"name": "spring-ws",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "element",
+			"item": [
+				{
+					"name": "GET ALL",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"default-e1\",\n    \"name\": \"Element 1\",\n    \"description\": \"Lorem ipsum dolor sit amet\",\n    \"date\": \"2021-04-07T21:52:13.681+00:00\",\n    \"success\": true,\n    \"amount\": 5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}{{version}}/elements",
+							"host": [
+								"{{server}}{{version}}"
+							],
+							"path": [
+								"elements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{server}}{{version}}/elements/default-e1",
+							"host": [
+								"{{server}}{{version}}"
+							],
+							"path": [
+								"elements",
+								"default-e1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BY ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}{{version}}/elements/default-e2",
+							"host": [
+								"{{server}}{{version}}"
+							],
+							"path": [
+								"elements",
+								"default-e2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Element 4\",\n    \"description\": \"New element created from POST\",\n    \"date\": \"2021-04-08T13:14:04.492+00:00\",\n    \"success\": true,\n    \"amount\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}{{version}}/elements",
+							"host": [
+								"{{server}}{{version}}"
+							],
+							"path": [
+								"elements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "REPLACE",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"trying to overwrite the id\",\n    \"name\": \"Element 2 - replaced\",\n    \"description\": \"This is a replacement for previous element\",\n    \"date\": \"2021-04-08T13:14:04.492+00:00\",\n    \"success\": true,\n    \"amount\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}{{version}}/elements/default-e2",
+							"host": [
+								"{{server}}{{version}}"
+							],
+							"path": [
+								"elements",
+								"default-e2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MERGE",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Element 3 - Only update the name\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}{{version}}/elements/default-e3",
+							"host": [
+								"{{server}}{{version}}"
+							],
+							"path": [
+								"elements",
+								"default-e3"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "security",
+			"item": [
+				{
+					"name": "LOGIN",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"user\",\n    \"password\": \"wrong\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}{{version}}/security/login",
+							"host": [
+								"{{server}}{{version}}"
+							],
+							"path": [
+								"security",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
