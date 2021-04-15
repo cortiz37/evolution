@@ -10,7 +10,9 @@
                          paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom"
                          emptyMessage="No results">
                 <p:column headerText="Date" priority="1">
-                    <h:outputText value="#{invoice.date}"/>
+                    <h:outputText value="#{invoice.date}">
+                        <f:convertDateTime pattern="yyyy/MM/dd hh:mm a"/>
+                    </h:outputText>
                 </p:column>
                 <p:column headerText="Client" priority="1">
                     <h:outputText value="#{invoice.clientId}"/>

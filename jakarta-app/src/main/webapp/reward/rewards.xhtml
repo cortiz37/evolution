@@ -1,6 +1,7 @@
 <ui:composition template="/template/main-simple.xhtml" xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui"
-                xmlns:h="http://java.sun.com/jsf/html">
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
 
     <ui:define name="pageName">Rewards</ui:define>
     <ui:define name="content">
@@ -11,7 +12,9 @@
                              paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom"
                              emptyMessage="No results">
                     <p:column headerText="Date" priority="1">
-                        <h:outputText value="#{reward.date}"/>
+                        <h:outputText value="#{reward.date}">
+                            <f:convertDateTime pattern="yyyy/MM/dd hh:mm a"/>
+                        </h:outputText>
                     </p:column>
                     <p:column headerText="Client" priority="1">
                         <h:outputText value="#{reward.clientId}"/>
