@@ -7,3 +7,11 @@ export function getAll() {
         method: 'GET'
     });
 }
+
+export function create(client, reward, invoice) {
+    return request({
+        url: API_BASE_URL + '/customers/' + client + '/invoices?reward=' + reward,
+        method: 'POST',
+        body: JSON.stringify(invoice)
+    });
+}

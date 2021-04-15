@@ -4,6 +4,7 @@ import DataTable from "../../../common/DataTable";
 import {Button, Table} from 'antd';
 import Moment from 'react-moment';
 import {BellOutlined, CheckCircleOutlined, PlusCircleOutlined} from "@ant-design/icons";
+import {Link} from "react-router-dom";
 
 class Invoices extends DataTable {
     constructor(props) {
@@ -23,7 +24,7 @@ class Invoices extends DataTable {
                 title: 'Date',
                 dataIndex: 'date',
                 key: 'date',
-                render: date => <Moment date={date} format="DD/MM/YYYY"/>
+                render: date => <Moment date={date} format="YYYY/MM/DD hh:mm a"/>
             },
             {
                 title: 'Client',
@@ -60,14 +61,9 @@ class Invoices extends DataTable {
         return <div>
             <div className="action-container">
                 <div>
-                <Button key="add"
-                        type="primary"
-                        onClick={(e) => {
-                            alert('ok')
-                        }}>
-                    <PlusCircleOutlined />
-                    Add
-                </Button>
+                    <Link to="/add/invoice">
+                        <Button key="add" type="primary"> <PlusCircleOutlined/> Add </Button>
+                    </Link>
                 </div>
             </div>
             <Table

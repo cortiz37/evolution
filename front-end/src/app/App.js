@@ -11,6 +11,7 @@ import RewardRoute from "./routes/RewardRoute";
 import NotificationRoute from "./routes/NotificationRoute";
 import AppHeader from "./AppHeader";
 import AppMenu from "./AppMenu";
+import InvoiceAddRoute from "./routes/InvoiceAddRoute";
 
 const {Content} = Layout;
 
@@ -38,6 +39,7 @@ class App extends Component {
                             <Route exact path="/" render={(props) => <MainRoute {...this.state} />}/>
                             <Route path="/customers" render={(props) => <CustomerRoute {...this.state} />}/>
                             <Route path="/invoices" render={(props) => <InvoiceRoute {...this.state} />}/>
+                            <Route path="/add/invoice" render={(props) => <InvoiceAddRoute {...this.state} />}/>
                             <Route path="/rewards" render={(props) => <RewardRoute {...this.state} />}/>
                             <Route path="/notifications" render={(props) => <NotificationRoute {...this.state} />}/>
                             <Route component={NotFound}></Route>

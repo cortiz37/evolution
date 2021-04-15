@@ -8,6 +8,13 @@ export function getAll() {
     });
 }
 
+export function getAllActiveByClient(id) {
+    return request({
+        url: API_BASE_URL + '/customers/' + id + '/rewards',
+        method: 'GET'
+    });
+}
+
 export function deleteById(id) {
     return request({
         url: API_BASE_URL + '/customers/rewards/' + id,

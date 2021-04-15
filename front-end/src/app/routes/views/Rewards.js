@@ -27,7 +27,7 @@ class Rewards extends DataTable {
                 title: 'Date',
                 dataIndex: 'date',
                 key: 'date',
-                render: date => <Moment date={date} format="DD/MM/YYYY"/>
+                render: date => <Moment date={date} format="YYYY/MM/DD hh:mm a"/>
             },
             {
                 title: 'Client',
