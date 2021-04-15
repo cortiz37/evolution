@@ -5,7 +5,7 @@ import com.repository.EmailRepository;
 
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -21,7 +21,7 @@ public class EmailService {
 
     public Email create(Email email) {
         email.setId(UUID.randomUUID().toString());
-        email.setDate(java.sql.Date.valueOf(LocalDate.now()));
+        email.setDate(new Date());
         return emailRepository.save(email);
     }
 

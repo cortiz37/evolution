@@ -3,7 +3,6 @@ package com.repository;
 import com.model.Reward;
 
 import javax.enterprise.context.ApplicationScoped;
-import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -21,7 +20,7 @@ public class RewardRepository {
 
     static {
         List<Reward> client1Rewards = new ArrayList<>();
-        client1Rewards.add(new Reward("r001", "c1", "Discount 5%", java.sql.Date.valueOf(LocalDate.now()), 5));
+        client1Rewards.add(new Reward("r001", "c1", "Discount 5%", new Date(), 5));
 
         database.put("c1", client1Rewards);
     }
@@ -69,7 +68,7 @@ public class RewardRepository {
             Reward reward = new Reward(
                 UUID.randomUUID().toString(),
                 customerId,
-                "Discount Reward - Auto", java.sql.Date.valueOf(LocalDate.now()), AUTO_REWARD_DISCOUNT
+                "Discount Reward - Auto", new Date(), AUTO_REWARD_DISCOUNT
             );
             save(reward, customerId);
             databaseConsiderReward.remove(customerId);
