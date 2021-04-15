@@ -1,5 +1,7 @@
 package com.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Customer {
@@ -9,6 +11,7 @@ public class Customer {
     private String address;
     private String email;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.S'Z'")
     private Date date;
 
     private boolean active;
