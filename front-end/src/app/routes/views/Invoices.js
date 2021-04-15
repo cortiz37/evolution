@@ -1,9 +1,9 @@
 import React from 'react';
 import {getAll} from "../../../service/InvoicesService";
 import DataTable from "../../../common/DataTable";
-import {Table} from 'antd';
+import {Button, Table} from 'antd';
 import Moment from 'react-moment';
-import {BellOutlined, CheckCircleOutlined} from "@ant-design/icons";
+import {BellOutlined, CheckCircleOutlined, PlusCircleOutlined} from "@ant-design/icons";
 
 class Invoices extends DataTable {
     constructor(props) {
@@ -58,6 +58,18 @@ class Invoices extends DataTable {
         ];
 
         return <div>
+            <div className="action-container">
+                <div>
+                <Button key="add"
+                        type="primary"
+                        onClick={(e) => {
+                            alert('ok')
+                        }}>
+                    <PlusCircleOutlined />
+                    Add
+                </Button>
+                </div>
+            </div>
             <Table
                 dataSource={this.state.data}
                 columns={columns} bordered loading={this.state.loading}

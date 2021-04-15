@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Menu} from "antd";
-import {GifOutlined, GroupOutlined, HomeOutlined, MoneyCollectOutlined, NotificationOutlined} from "@ant-design/icons";
+import {DollarCircleOutlined, GiftOutlined, HomeOutlined, MailOutlined, TeamOutlined} from "@ant-design/icons";
 import {Link} from "react-router-dom";
 
 class AppMenu extends Component {
@@ -13,22 +13,22 @@ class AppMenu extends Component {
                         Home
                     </Link>
                 </Menu.Item>
-                <Menu.Item key="/customers" icon={<GroupOutlined/>}>
+                <Menu.Item key="/customers" icon={<TeamOutlined/>}>
                     <Link to="/customers">
                         Customers
                     </Link>
                 </Menu.Item>
-                <Menu.Item key="/invoices" icon={<MoneyCollectOutlined/>}>
+                <Menu.Item key="/invoices" icon={<DollarCircleOutlined/>}>
                     <Link to="/invoices">
                         Invoices
                     </Link>
                 </Menu.Item>
-                <Menu.Item key="/rewards" icon={<GifOutlined/>}>
+                <Menu.Item key="/rewards" icon={<GiftOutlined/>}>
                     <Link to="/rewards">
                         Rewards
                     </Link>
                 </Menu.Item>
-                <Menu.Item key="/notifications" icon={<NotificationOutlined/>}>
+                <Menu.Item key="/notifications" icon={<MailOutlined/>}>
                     <Link to="/notifications">
                         Notifications
                     </Link>

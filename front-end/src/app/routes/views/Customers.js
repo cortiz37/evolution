@@ -79,6 +79,7 @@ class Customers extends DataTable {
         ];
 
         return <div>
+            <div className="action-container"></div>
             <Table
                 dataSource={this.state.data}
                 columns={columns} bordered loading={this.state.loading}

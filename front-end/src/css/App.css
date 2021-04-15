@@ -37,3 +37,12 @@ html, body, #root, .app-container {
     z-index: 10;
     padding: 0;
 }
+
+.action-container {
+    margin-bottom: 10px;
+    min-height: 30px;
+}
+
+.action-container div {
+    float: right;
+}

@@ -5,6 +5,7 @@ class MainRoute extends Component {
 
     render() {
         return <div>
+            <div className="action-container"></div>
             <Card size="big" title="Home - Customer App" style={{ width: '100%' }}>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.</p>
                 <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
