@@ -24,6 +24,11 @@ class DataTable extends Component {
                     isLoading: false
                 });
             }
+        }).catch(error => {
+            this.setState({
+                error: error,
+                isLoading: false
+            });
         });
     }
 
@@ -45,7 +50,14 @@ class DataTable extends Component {
 
         return <div>
             {
-                this.state.data ? (this.renderView()) : <p>No results...</p>
+                this.state.data ?
+                    this.renderView()
+                    :
+                    <div>
+                        {
+                            this.state.error ? this.renderError() : <p>No results...</p>
+                        }
+                    </div>
             }
         </div>
     }

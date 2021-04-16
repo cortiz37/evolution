@@ -1,7 +1,7 @@
 import React from 'react';
 import {deleteById, getAll} from "../../../service/NotificationsService";
 import DataTable from "../../../common/DataTable";
-import {Popconfirm, Table} from 'antd';
+import {Alert, Card, Popconfirm, Table} from 'antd';
 import Moment from 'react-moment';
 import {DeleteOutlined, MailOutlined, WarningOutlined} from "@ant-design/icons";
 
@@ -19,6 +19,20 @@ class Notifications extends DataTable {
 
     deleteNotification(id) {
         deleteById(id).then(result => this.load());
+    }
+
+    renderError() {
+        return <div>
+            <div className="action-container"></div>
+            <Card size="big" title="Resource not available" style={{width: '100%'}}>
+                <Alert
+                    message="Unable to access the notification system"
+                    description="Try again later."
+                    type="error"
+                    showIcon
+                />
+            </Card>
+        </div>
     }
 
     renderView() {

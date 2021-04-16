@@ -1,6 +1,6 @@
 import {Modal} from "antd/lib/index";
 
-export const request = (options) => {
+export const request = (options, propagateError) => {
     const headers = new Headers({
         'Content-Type': 'application/json'
     });
@@ -19,6 +19,9 @@ export const request = (options) => {
                 })
         }).catch(error => {
             console.log(error)
+            if (propagateError) {
+                throw error;
+            }
             return showError('Something went wrong.')
         });
 };
