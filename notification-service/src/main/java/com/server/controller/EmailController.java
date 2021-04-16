@@ -1,7 +1,7 @@
-package com.sample.server.controller;
+package com.server.controller;
 
-import com.sample.server.model.Email;
-import com.sample.server.service.EmailService;
+import com.server.model.Email;
+import com.server.service.EmailService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

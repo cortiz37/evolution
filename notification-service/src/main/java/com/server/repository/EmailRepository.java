@@ -1,6 +1,6 @@
-package com.sample.server.repository;
+package com.server.repository;
 
-import com.sample.server.model.Email;
+import com.server.model.Email;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

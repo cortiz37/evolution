@@ -1,6 +1,6 @@
-package com.sample.server.service;
+package com.server.service;
 
-import com.sample.server.model.Email;
+import com.server.model.Email;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
