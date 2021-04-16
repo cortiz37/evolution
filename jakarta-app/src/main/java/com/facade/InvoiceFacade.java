@@ -1,12 +1,11 @@
 package com.facade;
 
-import com.model.Email;
+import com.client.EmailClientService;
 import com.model.Invoice;
 import com.service.CustomerService;
 import com.service.InvoiceService;
 import com.service.RewardService;
 
-import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import java.util.List;
@@ -24,8 +23,8 @@ public class InvoiceFacade {
     @Inject
     private RewardService rewardService;
 
-    @EJB
-    private EmailFacade emailFacade;
+    @Inject
+    private EmailClientService emailClientService;
 
     public List<Invoice> getAll() {
         return invoiceService.getAll();
@@ -75,24 +74,22 @@ public class InvoiceFacade {
 
     private void notifyNewInvoice(String customerId, Invoice invoice) {
         customerService.getCustomerById(customerId).map(c -> {
-            Email email = new Email(
+            emailClientService.sendEmail(
                 c.getEmail(),
                 "New Invoice!",
                 "New Invoice created: " + invoice.getMerchant() + ", total: " + invoice.getTotalPaid()
             );
-            emailFacade.create(email);
             return true;
         });
     }
 
     private void notifyNewReward(String customerId) {
         customerService.getCustomerById(customerId).map(c -> {
-            Email email = new Email(
+            emailClientService.sendEmail(
                 c.getEmail(),
                 "New Reward!",
                 "You have earned a new reward for your next purchase. Enjoy it!"
             );
-            emailFacade.create(email);
             return true;
         });
     }

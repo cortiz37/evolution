@@ -1,7 +1,6 @@
 package com.repository;
 
 import com.model.Customer;
-import com.service.EmailSenderService;
 
 import javax.enterprise.context.ApplicationScoped;
 import java.util.*;
@@ -16,7 +15,10 @@ public class CustomerRepository {
     private final static List<Customer> database = new ArrayList<>();
 
     static {
-        String default_email = EmailSenderService.email_address;
+        String default_email = System.getenv("DEFAULT_EMAIL_ADDRESS");
+        if(default_email == null) {
+            default_email = "no_address";
+        }
 
         database.add(new Customer("c1", "John", "5th ave. 2331", default_email, new Date(), true));
         database.add(new Customer("c2", "Mary", "Grand H S/N", default_email, new Date(), true));
