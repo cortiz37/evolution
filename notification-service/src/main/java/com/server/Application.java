@@ -1,5 +1,6 @@
 package com.server;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -24,5 +25,10 @@ public class Application {
                     .allowedMethods("GET", "PUT", "POST", "DELETE", "OPTIONS");
             }
         };
+    }
+
+    @Bean
+    public ObjectMapper objectMapper() {
+        return new ObjectMapper();
     }
 }

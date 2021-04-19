@@ -1,30 +1,27 @@
 package com.facade;
 
-import com.client.EmailClientService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.model.Invoice;
 import com.service.CustomerService;
 import com.service.InvoiceService;
 import com.service.RewardService;
+import com.stream.KafkaProducer;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Stateless
 public class InvoiceFacade {
 
+    private final ObjectMapper objectMapper = new ObjectMapper();
     @Inject
     private InvoiceService invoiceService;
-
     @Inject
     private CustomerService customerService;
-
     @Inject
     private RewardService rewardService;
-
-    @Inject
-    private EmailClientService emailClientService;
 
     public List<Invoice> getAll() {
         return invoiceService.getAll();
@@ -74,22 +71,30 @@ public class InvoiceFacade {
 
     private void notifyNewInvoice(String customerId, Invoice invoice) {
         customerService.getCustomerById(customerId).map(c -> {
-            emailClientService.sendEmail(
-                c.getEmail(),
-                "New Invoice!",
-                "New Invoice created: " + invoice.getMerchant() + ", total: " + invoice.getTotalPaid()
-            );
+            Map<String, Object> data = new HashMap<>();
+            data.put("to", Collections.singletonList(c.getEmail()));
+            data.put("subject", "New Invoice!");
+            data.put("body", "New Invoice created: " + invoice.getMerchant() + ", total: " + invoice.getTotalPaid());
+            try {
+                KafkaProducer.sendMessage(invoice.getId(), objectMapper.writeValueAsString(data));
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
             return true;
         });
     }
 
     private void notifyNewReward(String customerId) {
         customerService.getCustomerById(customerId).map(c -> {
-            emailClientService.sendEmail(
-                c.getEmail(),
-                "New Reward!",
-                "You have earned a new reward for your next purchase. Enjoy it!"
-            );
+            Map<String, Object> data = new HashMap<>();
+            data.put("to", Collections.singletonList(c.getEmail()));
+            data.put("subject", "New Reward!");
+            data.put("body", "You have earned a new reward for your next purchase. Enjoy it!");
+            try {
+                KafkaProducer.sendMessage("reward", objectMapper.writeValueAsString(data));
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
             return true;
         });
     }
