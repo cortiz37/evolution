@@ -1,0 +1,52 @@
+version: "3"
+
+services:
+  app:
+    build: front-end
+    ports:
+      - "3000:3000"
+    environment:
+      - API_BASE_URL=http://business:8080/jakarta-app/rest/v1
+      - API_NOTIFICATION_URL=http://notification:9090/v1/emails
+  business:
+    build: jakarta-app
+    ports:
+      - "8080:8080"
+    environment:
+      - KAFKA_URL=kafka:9092
+      - KAFKA_TOPIC=emails
+  notification:
+    build: notification-service
+    image: notification-service:1.0.0
+    ports:
+      - "9090:9090"
+    environment:
+      - APP_OPTS=-Djasypt.encryptor.password=curso**
+  zookeeper:
+    image: docker.io/bitnami/zookeeper:3
+    ports:
+      - "2181:2181"
+    volumes:
+      - "zookeeper_data:/bitnami"
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+  kafka:
+    image: docker.io/bitnami/kafka:2
+    ports:
+      - "9092:9092"
+    volumes:
+      - "kafka_data:/bitnami"
+    environment:
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+      - ALLOW_PLAINTEXT_LISTENER=yes
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092
+      - KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE=true
+    depends_on:
+      - zookeeper
+
+volumes:
+  zookeeper_data:
+    driver: local
+  kafka_data:
+    driver: local
