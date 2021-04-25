@@ -22,7 +22,7 @@ public class NotificationListener {
         this.emailService = emailService;
     }
 
-    @KafkaListener(id = "email-client", topics = "notifications")
+    @KafkaListener(id = "${kafka.client.id}", topics = "${kafka.topic.notification.email}")
     public boolean receiveEmails(String payload) {
         try {
             Email email = objectMapper.readValue(payload, Email.class);
