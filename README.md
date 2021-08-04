@@ -8,5 +8,5 @@ Branches:
 - **master** (jakarta / J2EE monolithic application)
 - **feature/1-new-ui** (new UI, reactjs app, abandon old JSF UI)
 - **feature/2-separate-service** (notifications in a separate and reusable service)
-- **feature/3-stream** function (break direct calls between services, using Apache Kafka)
+- **feature/3-stream** (break direct calls between services, using Apache Kafka)
 - **feature/4-docker** (containers)
